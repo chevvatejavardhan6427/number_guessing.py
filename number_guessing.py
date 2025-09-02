@@ -4,14 +4,21 @@ high=100
 number=random.randint(low,high)
 guesses=0
 while True:
-	guess=int(input("guess a number between 1-100 : "))
-	guesses+=1
-	if guess<number:
-		print("its too small")
-	elif guess>number:
-		print("its too big")
+	guess=input(f"guess a number between ({low}-{high}) : ")
+	if guess.isdigit():
+			guess=int(guess)
+			guesses+=1
+			if guess<low or guess>high:
+				print("your number is out of range")
+			elif guess<number:
+				print("its too small")
+			elif guess>number:
+				print("its too big")
+			else:
+				print(" your guess is correct")
+				break
 	else:
-		print("guess is correct")
-		break
+		print("you have entered invalid number")
+		guess=int(input(f"guess a number between ({low}-{high}) : "))
 	
 print(f"no of guesses={guesses} ")
